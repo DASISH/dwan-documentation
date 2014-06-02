@@ -37,7 +37,7 @@ Semantics of an annotation is given in its body. In the implementation a body ca
 
 Annotations can be gathered in notebooks.
 
-![DWAN data model](/images/logo.png)
+![DWAN data model](model.png)
 
 See [schema](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd)  the schema for serializing these classes, and examples. 
 
@@ -59,13 +59,13 @@ Below all requests are listed and the corresponding server responds are describe
 |:----------|-----------:|
 | <aid> | 	annotation identifier |
 |<cid>	| cached-representation identifier|
-|<datetime>	| date and time, including time zone, as defined in [http://www.w3.org/TR/xmlschema-2/#dateTime] |
+|<datetime>	| date and time, including time zone, as defined in [http://www.w3.org/TR/xmlschema-2/#dateTime](http://www.w3.org/TR/xmlschema-2/#dateTime)|
 |<nid>	 | notebook identifier |
 | <prefix> | 	the prefix of a namespace |
 | <tid>	 | target identifier |
 | <text> |	aome text |
 | <prid> |	a principal id|
-|<URI>	| URI, as defined in [http://tools.ietf.org/html/rfc3986] |
+|<URI>	| URI, as defined in [http://tools.ietf.org/html/rfc3986](http://tools.ietf.org/html/rfc3986) |
 | Principal	| a user (person) or a group of users |
 
 
