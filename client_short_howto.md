@@ -10,30 +10,30 @@ When the extension is properly installed and enabled you see the following scree
 ![Before login](images/dwan-wired-marker/1_before_login.png)
 #### Login
 To have access to the database, that enables reading and posting annotations, you need to log-in.  Now we describe how to log-in if your institution is listed as a Shibboleth identity provider. Then you can just use your institution credentials.
-* First, press "login" button and choose your institution or clarin as an identity provider
+* First, press "login" button and choose your institution or clarin as an identity provider.
 ![choose idp](/images/dwan-wired-marker/2_login_idp.png)
-* Second, provide your credentials
+* Second, provide your credentials and click "Login".
 ![Credentials](/images/dwan-wired-marker/3_logging_in.png)
 
 #### Seeing annotations of colleagues
-They are listed in the incoming directory. Press "incoming". (If it is your first dwan-session with the page annotation of which you want to see, you need to browse to it.) Klick on the annotation from the list "incoming" you want to see. It must appear in the light-yellow colour. Unless it appear, refresh the page.
+They are listed in the incoming directory. Click "incoming". (If it is your first dwan-session with the page annotation of which you want to see, you need to browse to it.) Click on the annotation you want to see. It must appear on the web-page in the light-yellow colour. Unless it appears, refresh the page.
 
 ![Get an annotation made by your colleague](images/dwan-wired-marker/4_incoming.png)
 
 #### Getting your annotations
 
-Annotation made by you are to be seen in the coloured folders according to the colours you have marked annotated texts. click on the annotation you want to see. 
+Annotations made by you are to be seen in the coloured folders according to the colours with which you have marked annotated texts. Click on the annotation you want to see. 
 
 ![Get an annotation made by you](images/dwan-wired-marker/5_myannotation.png)
 
 #### Unresolvable annotated source
-If you want to see your or someonce's annotation, and it does not appear after cliking on it and possibly, refreshing a page, it means that the client cannot resolve the annotated web-page. The most probabale reason for it is that the web-page has been changed since it was annotated. Point the mouse to the annotation in question and righ-click. In the pop-up menu select "Cached representations" and click "open remote cach" in the sub-menu. You will see the cached annotation:
+If you want to see your or someonelse's annotation, and it does not appear after cliking on it and refreshing the page, it means that the client cannot resolve the annotated fragment. The most probable reason for it is that the web-page has been changed since it was annotated. Point the mouse to the annotation in question and righ-click. In the pop-up menu select "Cached representations" and click "open remote cach" in the sub-menu. You will see the cached annotation:
 
 ![Get a cached representation](images/dwan-wired-marker/10_unresolvable_2_cached.png)
 
 Compare this example cached representation with the example current web-page below, the annotation on which cannot be found:
 
-![Updated web-page](images/dwan-wired-marker/10_unresolvable_1.png)
+![Updated web-page](images/dwan-wired-marker/9_unresolvable_1.png)
 
 As you see the annotated sentence has been changed.
 
