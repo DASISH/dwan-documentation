@@ -27,7 +27,7 @@ Annotations made by you are to be seen in the coloured folders according to the 
 ![Get an annotation made by you](images/dwan-wired-marker/5_myannotation.png)
 
 #### Unresolvable annotated source
-If you want to see your or someonelse's annotation, and it does not appear after cliking on it and refreshing the page, it means that the client cannot resolve the annotated fragment. The most probable reason for it is that the web-page has been changed since it was annotated. Point the mouse to the annotation in question and righ-click. In the pop-up menu select "Cached representations" and click "open remote cach" in the sub-menu. You will see the cached annotation:
+If you want to see your or someonelse's annotation, and it does not appear after cliking on it and refreshing the page, it means that the client cannot resolve the annotated fragment. The most probable reason for it is that the web-page has been changed since it was annotated. Point the mouse to the annotation in question and righ-click. In the pop-up menu select "Cached representations" and click "open remote cache" in the sub-menu. You will see the cached annotation:
 
 ![Get a cached representation](images/dwan-wired-marker/10_unresolvable_2_cached.png)
 
