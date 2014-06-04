@@ -9,7 +9,7 @@ Go to git-hub [GitHub's DASISH/dwan-client-wiredmarker repository](https://githu
 When the extension is properly installed and enabled you see the following screen:
 ![Before login](images/dwan-wired-marker/1_before_login.png)
 #### Login
-To have access to the database, that enables reading and posting annotations, you need to log-in.  Now we describe how to lo-in is your institution is listed in a Shibboleth identoty providers. Thne you can just use your institution credentials.
+To have access to the database, that enables reading and posting annotations, you need to log-in.  Now we describe how to log-in if your institution is listed in a Shibboleth identity providers. Thne you can just use your institution credentials.
 * First, press "login" button and choose your institution or clarin as an identity provider
 ![choose idp](/images/dwan-wired-marker/2_login_idp.png)
 * Second, provide your credentials
