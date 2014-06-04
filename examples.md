@@ -10,7 +10,7 @@ Resource-info types TargetInfo, AnnotationInfo, NotebookInfo contain reference t
 
 There is a number of auxiliary types as well. A commonly-used one is ResourceREF which contains the attribute "ref" of type xs:anyURI. It allows to declare elements-references and avoid mixing them with elements-resources.
 
-Currently the schema is located at [SchemaCatrepository](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd).
+Currently the schema is located at [SchemaCat repository](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd).
 
 Scenario XML's validated vs the given schema. See [scenario](scenario.md).
 
@@ -21,7 +21,7 @@ Scenario XML's validated vs the given schema. See [scenario](scenario.md).
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <principal xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 URI="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t5.6/schema/trunk/annotator-schema/src/main/resources/DASISH-schema.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <displayName>Peter</displayName>
     <eMail>Peter.Withers@mpi.nl</eMail>
 </principal>
@@ -32,7 +32,7 @@ xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <currentPrincipalInfo xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 ref="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <currentPrincipal>false</currentPrincipal>
 </currentPrincipalInfo>
 ```
@@ -43,7 +43,7 @@ xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/
 <principal xmlns="http://www.dasish.eu/ns/addit" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  URI="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <displayName>Twan</displayName>
     <eMail>Twan.Goosen@mpi.nl</eMail>
 </principal>
@@ -55,7 +55,8 @@ Responding *GET api/annotations?link=Sagrada*: all annotations which annotating 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<annotationInfoList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t5.6/schema/trunk/annotator-schema/src/main/resources/DASISH-schema.xsd">
+<annotationInfoList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <annotationInfo ref="https://lux17.mpi.nl/ds/webannotator/api/annotations/00000000-0000-0000-0000-000000000021" ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111">
         <headline>Sagrada Famiglia</headline>
         <lastModified>2013-08-12T09:25:00.383Z</lastModified>
@@ -94,7 +95,7 @@ Responding *GET api/annotations?link=Sagrada*: all annotations which annotating 
 <annotation xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 URI="https://lux17.mpi.nl/ds/webannotator/api/annotations/00000000-0000-0000-0000-000000000021" 
 ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t5.6/schema/trunk/annotator-schema/src/main/resources/DASISH-schema.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <headline>Sagrada Famiglia</headline>
     <lastModified>2013-08-12T09:25:00.383Z</lastModified>
     <body>
@@ -128,7 +129,8 @@ xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<targetList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t5.6/schema/trunk/annotator-schema/src/main/resources/DASISH-schema.xsd">
+<targetList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000031</ref>
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
 </targetList>
@@ -138,7 +140,7 @@ xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <permissionList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 public="write" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t5.6/schema/trunk/annotator-schema/src/main/resources/DASISH-schema.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112" level="write"/>
     <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000113" level="read"/>
     <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000221" level="read"/>
@@ -153,7 +155,8 @@ xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t
 An unresolvable target obeys the same schema. A target becomes unresolvable if e.g. its link becomes obsolete or broken.
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<target xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" URI="https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032" xsi:schemaLocation="http://www.dasish.eu/ns/addit https://svn.clarin.eu/DASISH/t5.6/schema/trunk/annotator-schema/src/main/resources/DASISH-schema.xsd">
+<target xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" URI="https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <lastModified>2014-03-13T09:52:51.004723Z</lastModified>
     <link>http://nl.wikipedia.org/wiki/Antoni_Gaud%C3%AD#Vroege_werk</link>
     <version>version 1.1</version>
@@ -171,7 +174,8 @@ An unresolvable target obeys the same schema. A target becomes unresolvable if e
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<referenceList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<referenceList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-00000000003c</ref>
 </referenceList>
@@ -182,7 +186,7 @@ An unresolvable target obeys the same schema. A target becomes unresolvable if e
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <cashedRepresentationInfo xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" URI="https://lux17.mpi.nl/ds/webannotator/api/cached/00000000-0000-0000-0000-000000000051" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <mimeType>image/png</mimeType>
     <tool>some tool 1</tool>
     <type>image</type>
@@ -198,7 +202,7 @@ The respond for an annotation with unresolved targets and the respond for an ann
 <annotation xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 URI="https://lux17.mpi.nl/ds/webannotator/api/annotations/00000000-0000-0000-0000-00000000002c" 
 ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111"
- xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <headline>Sagrada Famiglia</headline>
     <lastModified>2013-08-12T09:25:00.383Z</lastModified>
     <body>
@@ -225,7 +229,7 @@ Responding *GET api/targets/00000000-0000-0000-0000-00000000003c* (unresolvable 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <target xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 URI="https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <lastModified>2012-03-13T09:52:51.004723Z</lastModified>
     <link>http://nl.wikipedia.org/wiki/Antoni_Gaud%C3%AD#Vroege_werk_old</link>
     <version>version 1.1</version>
@@ -246,14 +250,16 @@ Responding *GET api/targets/00000000-0000-0000-0000-00000000003c/versions* (unre
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <referenceList xmlns="http://www.dasish.eu/ns/addit" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-00000000003c</ref>
 </referenceList>
 Responding GET api/cached/00000000-0000-0000-0000-000000000052/metadata (unresolvable target sources, step 5)
 
 ```xml <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<cashedRepresentationInfo xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" URI="https://lux17.mpi.nl/ds/webannotator/api/cached/00000000-0000-0000-0000-000000000052" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<cashedRepresentationInfo xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+URI="https://lux17.mpi.nl/ds/webannotator/api/cached/00000000-0000-0000-0000-000000000052" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <mimeType>image/png</mimeType>
     <tool>some tool 2</tool>
     <type>image</type>
@@ -273,7 +279,7 @@ The targets's URI will be replaced if the target is new (has not been presented 
 <annotation xmlns="http://www.dasish.eu/ns/addit"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xhtml="http://www.w3.org/1999/xhtml/"
-    xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd" 
+    xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd" 
     URI="xxx" 
     ownerRef="yyy">
     <headline>X-Pointer test annotation 6667</headline>
@@ -302,7 +308,8 @@ The temporary URIs/references are replaced with permanent references. However, n
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <annotation URI="http://lux17.mpi.nl/ds/webannotator/api/annotations/1d02f393-da25-4246-934c-876222a2d7fb" ownerRef="http://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000113">
         <headline>X-Pointer test annotation 6667</headline>
         <lastModified>2014-04-09T12:46:51.754226Z</lastModified>
@@ -344,7 +351,7 @@ Request body : an updated annotation
 <annotation xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 URI="https://lux17.mpi.nl/ds/webannotator/api/annotations/1d02f393-da25-4246-934c-876222a2d7fb" 
 ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000113" 
-xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <headline>update X-Pointer test annotation 6667</headline>
     <lastModified>2014-04-09T12:46:51.754226Z</lastModified>
     <body>
@@ -369,7 +376,8 @@ Enveloped respond containing new (updated) annotation and a list of actions:
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <annotation URI="https://lux17.mpi.nl/ds/webannotator/api/annotations/1d02f393-da25-4246-934c-876222a2d7fb" ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000113">
         <headline>update X-Pointer test annotation 6667</headline>
         <lastModified>2014-04-09T12:58:32.793453Z</lastModified>
@@ -407,7 +415,7 @@ Request body:
 <annotationBody xmlns="http://www.dasish.eu/ns/addit"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xhtml="http://www.w3.org/1999/xhtml/" 
-    xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+    xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
         <xmlBody>
             <mimeType>application/xml+xhtml</mimeType>
             <xhtml:span style="background-color:rgb(0,0,153);color:rgb(255,255,255);border: thick solid rgb(0, 0, 153);">2 UPDATE X pointer experiment UPDATE body </xhtml:span>
@@ -417,7 +425,8 @@ Response:
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <annotation URI="https://lux17.mpi.nl/ds/webannotator/api/annotations/1d02f393-da25-4246-934c-876222a2d7fb" ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000113">
         <headline>update X-Pointer test annotation 6667</headline>
         <lastModified>2014-04-09T13:01:21.900643Z</lastModified>
@@ -456,7 +465,7 @@ Request body:
 <?xml version="1.0" encoding="UTF-8"?>
 <permissionList xmlns="http://www.dasish.eu/ns/addit"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd"
+    xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd"
     public="none">
     <permission level="write" principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112"/>
     <permission level="read" principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000114"/>
@@ -466,7 +475,8 @@ Respond
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <permissions public="none">
         <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111" level="read"/>
         <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112" level="write"/>
@@ -481,7 +491,8 @@ Respond
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
+<responseBody xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <permissions public="none">
         <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111" level="read"/>
         <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112" level="write"/>
@@ -497,7 +508,7 @@ PUT *api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions/00000000-0
 <?xml version="1.0" encoding="UTF-8"?>
 <access xmlns="http://www.dasish.eu/ns/addit"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.dasish.eu/ns/addit http://www.dasish.eu/ns/addit http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">write</access>
+ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">write</access>
 ```
 Response: string "1 rows are updated/added".
 
@@ -509,7 +520,7 @@ Response: string "1 rows are updated/added".
 <?xml version="1.0" encoding="UTF-8"?>
 <notebooks xmlns="http://www.dasish.eu/ns/addit"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.dasish.eu/ns/addit http://dasish.eu/DASISH-schema.xsd">
+ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <notebook ref="http://dasish.eu/notebooks/NIDxyxy">
         <title>Gaudi</title>
     </notebook>
@@ -524,8 +535,7 @@ Response: string "1 rows are updated/added".
 <?xml version="1.0" encoding="UTF-8"?>
 <notebook xmlns="http://www.dasish.eu/ns/addit"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.dasish.eu/ns/addit
- http://dasish.eu/DASISH-schema.xsd" 
+ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd" 
  ref="http://dasish.eu/notebooks/NIDxyxy">
     <title>Gaudi</title>
 </notebook>
