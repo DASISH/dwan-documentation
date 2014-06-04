@@ -39,7 +39,7 @@ Annotations can be gathered in notebooks.
 
 ![DWAN data model](model.png)
 
-Check [the schema](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd)  for serialisation of these classes, and the examples from [the scenarios](scenarios.md).
+Check [the schema](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd)  for serialisation of these classes, and the [examples](examples.md).
 
 ##REST Application Programming Interface
 
@@ -80,7 +80,7 @@ Web-documents exist in time, that is different versions of the document may exis
 |GET api/authentication/principal|	 logged-in principal |	 Principal|
 |GET api/principals/```prid```	 | principal with the given prid | 	 Principal |
 |GET api/principals/```prid```/current	 | ```true``` if the *prid* is logged-in; ```false``` otherwise |	 CurrenPrincipalInfo |
-|GET api/principals/info?email=```... ``` | 	 see the corresponding example	at [the scenarios](scenarios.md) | Principal |
+|GET api/principals/info?email=```... ``` | 	 find the corresponding [example](examples.md) | Principal |
 | GET api/principals/admin |	 The string with the name and the e-mail of DWAN admin	 | String |
 ---
 
@@ -107,9 +107,9 @@ The table below describes the behavior of the request pair (method, URI) when pr
 |DELETE api/annotations/```aid```	| removes ```aid``` from the database, together with all its targets to which no other annotation refers |   0 or 1, and an http status code, no xml |
 |PUT api/annotations/```aid```| updates the annotation with ```aid```. For instance, it is used when ```prid``` wants to correct typos in the annotation body AND change annotated fragments. (See PUT api/annotations/```aid```/body for correcting body only.) The serialized representation of the updated annotation is given in the request body. The server returns an "envelope" containing the updated annotation and the list of actions.| Envelope AnnotationResponseBody |
 | PUT api/annotations/```aid```/body | updates the body of the annotation ```aid```. Used e.g. for correcting typos in the text part. The server returns the "envelope", see above.	| Envelope AnnotationResponseBody |
-| GET api/annotations/```aid```/permissions | see getting permission lists in [the scenarios](scenarios.md)| PermissionList |
-| PUT api/annotations/```aid```/permissions	| see updating permission lists	 in [the scenarios](scenarios.md) | envelope PermissionResponseBody |
-| PUT api/annotations/```aid```/permissions/```prid``` | see adding/updating access	in [the scenarios](scenarios.md) | http status code |
+| GET api/annotations/```aid```/permissions | see getting permission lists in [the examples](examples.md)| PermissionList |
+| PUT api/annotations/```aid```/permissions	| see updating permission lists	 in [the examples](examples.md) | envelope PermissionResponseBody |
+| PUT api/annotations/```aid```/permissions/```prid``` | see adding/updating access	in [the examples](examples.md) | http status code |
 ---
 
 ###Targets###
