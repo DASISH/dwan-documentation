@@ -3,11 +3,11 @@
 ###(TLA)
 
 
-This document specifies a framework for annotating web-documents. We present the class structure of the implementation, describe the functionality from the user perspective and define the REST API.
+This document specifies a framework for annotating web-documents. We present the class structure of the implementation and define the REST API. The instance functionality from the user perspective can be found in the document [Client short howto](client_short_howto.md).
 
-Document version: 1.3
+Document version: 2.0
 
-Date: 02 June 2014
+Date: 04 June 2014
 
 Authors: 
 Daan Broeder, Twan Goosen, Przemek Lenkiewicz, Olof Olsson, Stephanie Roth, Olha Shkaravska, Menzo Windhouwer.
@@ -29,9 +29,9 @@ A client exchanges data with the server by sending REST requests to the server. 
 
 Class *Annotation* is the core of the model. The relations *Annotation - Target*, *Target - Source*, *Target - Cached Representation* closely follow the emerging [Open Annotations (OA) standard](http://www.openannotation.org/). An annotation, i.e. an inhabitant of the class *Annotation*, is a structure that contains necessary information about user's annotation. In particular it contains the annotation's identifier, the reference to the owner and the time of creation. An owner is either the user (or more generally, a principal) who has created the annotation or a user (principal) to whom the ownership has been assigned. A principal is ether a user or a group of users. Creating user's groups is the matter of the future work.
 
-Besides the owner, an annotation has *readers* and *writers*. As one can expect, a reader is a user that can read the annotation, and a writer can also add changes to it. Thus, a registered user can be related to an annotation by means of one of three access modes (*owner*, *reader*, *writer*), or do not have an access to the annotation at all.
+Besides the owner, an annotation has *readers* and *writers*. As one can expect, a reader is a user that can read the annotation, and a writer can also add changes to it. Thus, a registered user can be related to an annotation by means of one of two access modes (*reader*, *writer*), or do not have an access to the annotation at all.
 
-An annotation can have one ore more *target*s. A target (i.e. an inhabitant of the "Target" class) contains the reference to the web-document (a *source*) and the precise description of the document's fragment which is actually annotated. Moreover, a target may refer to one or more cached representations of the relevant parts of the source with the precise descriptions of the annotated fragments for each representation.
+An annotation can have one ore more *targets*. A target (i.e. an inhabitant of the "Target" class) contains the reference to the web-document (a _source_) and the precise description of the document's fragment which is actually annotated. Moreover, a target may refer to one or more cached representations of the relevant parts of the source with the precise descriptions of the annotated fragments for each representation.
 
 Semantics of an annotation is given in its body. In the implementation a body can be an arbitrary text or an xml text. In both cases a precise mime-type must be given by a client. For instance, a body can be a plain text which describes a relation (like contradiction) between two fragments of some web-document. In this case the body should contain references to the targets that represent these two fragments.
 
@@ -39,7 +39,7 @@ Annotations can be gathered in notebooks.
 
 ![DWAN data model](model.png)
 
-See [schema](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd)  the schema for serializing these classes, and examples. 
+Check [the schema](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd)  for serialisation of these classes, and the examples from [the scenarios](scenarios.md).
 
 ##REST Application Programming Interface
 
@@ -50,7 +50,7 @@ GET requests are used to retrieve information about resources stored in the Data
 
 If a POST (PUT) request is sent then in the case of success the server returns the serialized information about the added (resp. updated) resource together with a standard HTTP response code. In the case of failure the corresponding error message and error status are returned, e. g. 401 Unauthorized access if the principal is not logged in (except for the log-in service).
 
-Below all requests are listed and the corresponding server responds are described in more detail.
+Below all requests are listed and the corresponding server responses are described in more detail.
 
 **Notation**
 
@@ -63,24 +63,24 @@ Below all requests are listed and the corresponding server responds are describe
 |```nid```	 | notebook identifier |
 | ```prefix``` | 	the prefix of a namespace |
 | ```tid```	 | target identifier |
-| ```text``` |	aome text |
-| ```prid``` |	a principal id|
+| ```text``` |	some text |
+| ```prid``` |	principal's id|
 |```URI```	| URI, as defined in [http://tools.ietf.org/html/rfc3986](http://tools.ietf.org/html/rfc3986) |
 | Principal	| a user (person) or a group of users |
 ---
 
-Web-documents exist in time, that is different versions of the document may exist under the same link in different moments of time. As stated earlier, we will rely on local caching of versions of annotated sources, see Unresolvable targets in Scenario for an example. For now in this document the descriptions of the requests often refer to the corresponding descriptions on the Scenario wiki-page. It will be the other way around, i.e. the Scenario will refer to this specification document, after the implementation stabilizes.
+Web-documents exist in time, that is different versions of the document may exist under the same link in different moments of time. As stated earlier, we will rely on caching of versions of annotated sources, see Unresolvable targets in Scenario for an example. For now in this document the descriptions of the requests often refer to the corresponding descriptions on [the scenarios document](scenarios.md). It will be the other way around, i.e. the scenarios will refer to this specification document, after the implementation stabilizes.
 
 ###Principal realm
 
 ---
 | Resource	| Description	| Return xml type |
 |:----------|:--------------| -----------:|
-| GET api/authentication/login | 	 logged-in principal if logged-in;otherwise redirects to the login page first |	 Principal |
+| GET api/authentication/login | 	 redirects to the login page, if the principal is not logged-in, or messages otherwise |	 String message|
 |GET api/authentication/principal|	 logged-in principal |	 Principal|
 |GET api/principals/```prid```	 | principal with the given prid | 	 Principal |
 |GET api/principals/```prid```/current	 | ```true``` if the *prid* is logged-in; ```false``` otherwise |	 CurrenPrincipalInfo |
-|GET api/principals/info?email=```... ``` | 	 see an example	 | Principal |
+|GET api/principals/info?email=```... ``` | 	 see the corresponding example	at [the scenarios](scenarios.md) | Principal |
 | GET api/principals/admin |	 The string with the name and the e-mail of DWAN admin	 | String |
 ---
 
@@ -91,26 +91,25 @@ Web-documents exist in time, that is different versions of the document may exis
 ---
 | Resource	    | Description |Return xml type |
 |:-------------|:--------------| -----------:|
-| GET api/annotations?
-link=```URI```&text=```text```&access=[["read", "write", "owner"]]&ns=```prefix```:ns&owner=```prid```&after=```datetime1```&before=```datetime2```|	returns a *filtered* by the request parameters list of info-s of the the annotations: for ```URI```, to which the unlogged ```prid``` has "read” (resp.”write”, "owner") access and the bodies of which contain the text ```text```. Moreover, these annotations are created between ```datetime1``` and ```datetime2```. If the parameter “link” is omitted, then considers all annotated objects to which ```prid``` has “read”/”write”/"owner" access. The default ```datetime1```is 01 Jan 1970, 00:00. The default ```datetime2``` is today.	| AnnotationInfoList|
+| GET api/annotations?link=```URI```&text=```text```&access=[["read","write"]]&ns=```prefix```:ns&owner=```prid```&after=```datetime1```&before=```datetime2```|	returns a *filtered* by the request parameters list of info-s of the the annotations: for ```URI```, to which the inlogged principal has "read” (resp.”write”) access and the bodies of which contain the text ```text```. Moreover, these annotations are created between ```datetime1``` and ```datetime2```. If the parameter “link” is omitted, then considers all annotated objects to which ```prid``` has “read”/”write” access. The default ```datetime1```is 01 Jan 1970, 00:00. The default ```datetime2``` is today.	| AnnotationInfoList|
 |POST api/annotations	|Adds a new annotation by picking up its XML-serialization from the request body.	| Envelope AnnotationResponseBody|
 ---
 
 **api/annotations/```aid```**
 
-The table below describes the behavior of the request pair (method, URI) when principal ```prid``` has authorized access to ```aid```. Here “authorized access “ means that ```prid``` has “read” access for GET-methods, and “write” access for PUT body methods. Moreover, to change permissions of the annotation the principal must be the "owner" of the annotation. If the access is not authorised, then 401 is return.
+The table below describes the behavior of the request pair (method, URI) when principal ```prid``` has authorized access to ```aid```. Here “authorized access “ means that ```prid``` has “read” access for GET-methods, and “write” access for PUT body methods. To change permissions of the annotation the principal must be the "owner" of the annotation. If the access is not authorised, then 401 is return.
 
 ---
 | Resource      | Description | Return xml type |
 |:--------------|:--------------| -----------:|
 |GET api/annotations/```aid``` | returns the annotation that has this  ```aid``` | Annotation |
 | GET api/annotations/```aid```/targets	| returns the list of the ```tid```-s of all the targets of ```aid```|	 ReferenceList |
-|DELETE api/annotations/```aid```	| removes ```aid``` from the database, together with all its targets to which no other annotation refers |   http status code, no xml |
+|DELETE api/annotations/```aid```	| removes ```aid``` from the database, together with all its targets to which no other annotation refers |   0 or 1, and an http status code, no xml |
 |PUT api/annotations/```aid```| updates the annotation with ```aid```. For instance, it is used when ```prid``` wants to correct typos in the annotation body AND change annotated fragments. (See PUT api/annotations/```aid```/body for correcting body only.) The serialized representation of the updated annotation is given in the request body. The server returns an "envelope" containing the updated annotation and the list of actions.| Envelope AnnotationResponseBody |
 | PUT api/annotations/```aid```/body | updates the body of the annotation ```aid```. Used e.g. for correcting typos in the text part. The server returns the "envelope", see above.	| Envelope AnnotationResponseBody |
-| GET api/annotations/```aid```/permissions | see getting permission lists | PermissionList |
-| PUT api/annotations/```aid```/permissions	| see updating permission lists	| envelope PermissionResponseBody |
-| PUT api/annotations/```aid```/permissions/```prid``` | see adding/updating access	 | http status code |
+| GET api/annotations/```aid```/permissions | see getting permission lists in [the scenarios](scenarios.md)| PermissionList |
+| PUT api/annotations/```aid```/permissions	| see updating permission lists	 in [the scenarios](scenarios.md) | envelope PermissionResponseBody |
+| PUT api/annotations/```aid```/permissions/```prid``` | see adding/updating access	in [the scenarios](scenarios.md) | http status code |
 ---
 
 ###Targets###
@@ -152,8 +151,7 @@ It is possible to store the cashed representation not only of the fragment preci
 | GET api/notebooks/```nid```/readers | returns the list of ```prid``` who allowed to read the annotations from the notebook | ReferenceList |
 | GET api/notebooks/```nid```/writers | returns the list of ```prid``` that can add annotations to the notebook | ReferenceList |
 | GET api/notebooks/```nid```/metadata | get all metadata about a specified notebook ```nid```, including the information if it is private or not | 	Notebook | 
-| GET api/notebooks/```nid```?
-maximumAnnotations=limit&startAnnotation=offset&orderby=orderby&orderingMode=```[[1,0]]```|  get the list of all annotations ```aid```-s contained within a Notebook with related metadata. Parameters: ```nid```, optional maximumAnnotations specifies the maximum number of annotations to retrieve (default -1, all annotations), optional startAnnotation specifies the starting point from which the annotations will be retrieved (default: -1, start from the first annotation), optional orderby, specifies the RDF property used to order the annotations (default: dc:created ), optional orderingMode specifies if the results should be sorted using a descending order desc=1 or an ascending order desc=0 (default: 0 ) | 	ReferenceList | 
+| GET api/notebooks/```nid```?maximumAnnotations=limit&startAnnotation=offset&orderby=orderby&orderingMode=```[[1,0]]```|  get the list of all annotations ```aid```-s contained within a Notebook with related metadata. Parameters: ```nid```, optional maximumAnnotations specifies the maximum number of annotations to retrieve (default -1, all annotations), optional startAnnotation specifies the starting point from which the annotations will be retrieved (default: -1, start from the first annotation), optional orderby, specifies the RDF property used to order the annotations (default: dc:created ), optional orderingMode specifies if the results should be sorted using a descending order desc=1 or an ascending order desc=0 (default: 0 ) | 	ReferenceList | 
 | PUT /notebooks/```nid``` | 	modifies metadata of ```nid```. The new notebook’s name must be sent in request’s body.	 | Envelope NotebookResponseBody | 
 | PUT /notebooks/```nid```/```aid``` | 	adds an annotation ```aid``` to the list of annotations of ```nid``` | 	 Envelope NotebookResponseBody | 
 | POST api/notebooks/ | creates a new notebook.  This API returns the ```nid``` of the created Notebook in response’s payload and the full URL of the notebook adding a Location header into the HTTP response. The name of the new notebook can be specified sending a specific payload | Envelope NotebookResponseBody | 
@@ -163,4 +161,4 @@ maximumAnnotations=limit&startAnnotation=offset&orderby=orderby&orderingMode=```
 
 
 ## Appendix 1 
-For Appendix 1 please see the [DOC](https://trac.clarin.eu/raw-attachment/wiki/DASISH/SpecificationDocument/DASISH-Annotator-1.1-snapshot.docx) file of this document. Note that it is obsolete except its Appendix.
+The first obsolete version of theis document can be found at [DOC](https://trac.clarin.eu/raw-attachment/wiki/DASISH/SpecificationDocument/DASISH-Annotator-1.1-snapshot.docx).
