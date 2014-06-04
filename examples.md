@@ -12,7 +12,7 @@ There is a number of auxiliary types as well. A commonly-used one is ResourceREF
 
 Currently the schema is located at [SchemaCat repository](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd).
 
-Scenario XML's validated vs the given schema. See [scenario](scenario.md).
+Scenario XML's validated vs the given schema. See [scenario](scenarios.md).
 
 ### Working with principals 
 *GET api/principals/00000000-0000-0000-0000-000000000112*
