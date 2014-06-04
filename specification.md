@@ -31,7 +31,7 @@ Class *Annotation* is the core of the model. The relations *Annotation - Target*
 
 Besides the owner, an annotation has *readers* and *writers*. As one can expect, a reader is a user that can read the annotation, and a writer can also add changes to it. Thus, a registered user can be related to an annotation by means of one of two access modes (*reader*, *writer*), or do not have an access to the annotation at all.
 
-An annotation can have one ore more *targets*. A target (i.e. an inhabitant of the "Target" class) contains the reference to the web-document (a _source_) and the precise description of the document's fragment which is actually annotated. Moreover, a target may refer to one or more cached representations of the relevant parts of the source with the precise descriptions of the annotated fragments for each representation.
+An annotation can have one or more *targets*. A target (i.e. an inhabitant of the "Target" class) contains the reference to the web-document (a _source_) and the precise description of the document's fragment which is actually annotated. Moreover, a target may refer to one or more cached representations of the relevant parts of the source with the precise descriptions of the annotated fragments for each representation.
 
 Semantics of an annotation is given in its body. In the implementation a body can be an arbitrary text or an xml text. In both cases a precise mime-type must be given by a client. For instance, a body can be a plain text which describes a relation (like contradiction) between two fragments of some web-document. In this case the body should contain references to the targets that represent these two fragments.
 
@@ -69,7 +69,7 @@ Below all requests are listed and the corresponding server responses are describ
 | Principal	| a user (person) or a group of users |
 ---
 
-Web-documents exist in time, that is different versions of the document may exist under the same link in different moments of time. As stated earlier, we will rely on caching of versions of annotated sources, see Unresolvable targets in Scenario for an example. For now in this document the descriptions of the requests often refer to the corresponding descriptions on [the scenarios document](scenarios.md). It will be the other way around, i.e. the scenarios will refer to this specification document, after the implementation stabilizes.
+Web-documents exist in time, that is different versions of the document may exist under the same link in different moments of time. As stated earlier, we will rely on caching of versions of annotated sources, see Unresolvable targets in Scenario for an example. For now in this document the descriptions of the requests often refer to the corresponding descriptions in [the scenarios document](scenarios.md). It will be the other way around, i.e. the scenarios will refer to this specification document, after the implementation stabilizes.
 
 ###Principal realm
 
@@ -134,7 +134,7 @@ It is possible to store the cashed representation not only of the fragment preci
 ---
 | Resource | Description | Return xml type |
 |:--------------|:--------------| -----------:|
-| GET | api/cached/```cid```/metadata | returns the meta-information of ```cid``` if it exists |	 CachedRepresentationInfo |
+| GET  api/cached/```cid```/metadata | returns the meta-information of ```cid``` if it exists | CachedRepresentationInfo |
 | GET api/cached/```cid```/stream | returns the file (stream) that is the cached representation with ```cid``` if it exists |	 no xml output |
 | GET api/cached/```cid```/content | returns the image file that is the cached representation with ```cid``` if it exists | no xml output |
 ---
@@ -161,4 +161,4 @@ It is possible to store the cashed representation not only of the fragment preci
 
 
 ## Appendix 1 
-The first obsolete version of theis document can be found at [DOC](https://trac.clarin.eu/raw-attachment/wiki/DASISH/SpecificationDocument/DASISH-Annotator-1.1-snapshot.docx).
+The first, obsolete, version of theis document can be found at [DOC](https://trac.clarin.eu/raw-attachment/wiki/DASISH/SpecificationDocument/DASISH-Annotator-1.1-snapshot.docx).
