@@ -1,6 +1,6 @@
 ## Web-annotator/API interaction scenarios
 
-[text](examples.md#Preamble)
+[text](examples.md#Working)
 
 ### Authentication api/authentication/login 
 
