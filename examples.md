@@ -12,8 +12,8 @@ There is a number of auxiliary types as well. A commonly-used one is ResourceREF
 
 Currently the schema is located at [SchemaCat repository](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd).
 
-### Working with principals 
-*GET api/principals/00000000-0000-0000-0000-000000000112*
+###Working with principals 
+####GET api/principals/00000000-0000-0000-0000-000000000112
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -25,7 +25,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </principal>
 ```
 
-*GET api/principals/00000000-0000-0000-0000-0000000000112/current*
+####GET api/principals/00000000-0000-0000-0000-0000000000112/current
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <currentPrincipalInfo xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -35,7 +35,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </currentPrincipalInfo>
 ```
 
-*GET api/principals/info?email=​twagoo@mpi.nl*
+####GET api/principals/info?email=​twagoo@mpi.nl
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <principal xmlns="http://www.dasish.eu/ns/addit" 
@@ -49,7 +49,9 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 
 ###Retrieving annotations
 
-Responding *GET api/annotations?link=Sagrada*: all annotations which annotating links containing "Sagrada"
+####Responding *GET api/annotations?link=Sagrada
+
+Returns all annotations which annotating links containing "Sagrada"
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -86,7 +88,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </annotationInfo>
 </annotationInfoList>
 ```
-*Responding GET api/annotations/00000000-0000-0000-0000-000000000021*
+####Responding GET api/annotations/00000000-0000-0000-0000-000000000021
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -123,7 +125,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </permissions>
 </annotation>
 ```
-*GET api/annotations/00000000-0000-0000-0000-000000000021/targets*
+####GET api/annotations/00000000-0000-0000-0000-000000000021/targets
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -135,7 +137,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 
 
 ```
-*GET api/annotations/00000000-0000-0000-0000-000000000021/permissions*
+####GET api/annotations/00000000-0000-0000-0000-000000000021/permissions
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <permissionList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -150,7 +152,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/e1788887-50b4-40c2-94a9-98a662d3ef7d" level="read"/>
 </permissionList>
 ```
-*GET api/targets/00000000-0000-0000-0000-000000000032*
+####GET api/targets/00000000-0000-0000-0000-000000000032
 
 
 ```xml
@@ -171,9 +173,9 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </target>
 ```
 
-An *unresolvable* target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken, or the source page has been changed so that the annotated fragment cannot be matched. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema type. If the principal sees that the client cannot resolve some targets in the requested annotation (e.g. some target fragments are not highlighted) , (s)he may ask for cached representations of the annotated source.
+An *unresolvable* target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken, or the source page has been changed so that the annotated fragment cannot be matched. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema type. If the principal sees that the client cannot resolve some targets in the requested annotation (e.g. some target fragments are not highlighted), (s)he may ask for cached representations of the annotated source.
 
-*GET api/cached/00000000-0000-0000-0000-000000000051/metadata*
+####GET api/cached/00000000-0000-0000-0000-000000000051/metadata
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -185,17 +187,17 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </cashedRepresentationInfo>
 ```
 
-For getting an actual cahced-representation file, use 
+For getting an actual cached-representation file use 
 
-*GET api/cached/00000000-0000-0000-0000-000000000051/stream*
+####GET api/cached/00000000-0000-0000-0000-000000000051/stream
 
-or 
+or (if it is an image)
 
-*GET api/cached/00000000-0000-0000-0000-000000000051/content* (if it is an image)
+####GET api/cached/00000000-0000-0000-0000-000000000051/content
 
 Additionally,  a client may request the list of all versions of a target:
 
-*GET api/targets/00000000-0000-0000-0000-000000000032/versions*
+####GET api/targets/00000000-0000-0000-0000-000000000032/versions
 
 
 ```xml
@@ -211,7 +213,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 
 ###Making a new annotation
 
-Request body for *POST api/annotations*
+####Request body for *POST api/annotations*
 
 
 ```xml 
@@ -243,10 +245,10 @@ Request body for *POST api/annotations*
 </annotation>
 ```
 
-New-annotation's URI and  the owner reference will generated by the server, and the ones given in the request will be replaced. The new annotation URI is service URI + the UUID generated by the server. The owner reference is the service URI + logged-in user UUID.
+New-annotation's URI and  the owner reference will generated by the server, and the ones given in the request will be replaced. The new annotation URI is the service URI + the UUID generated by the server. The owner reference is the service URI + logged-in user UUID.
 The targets's URI will be replaced if the target is new (has not been presented in the dtatabase yet).
 
-Response body (envelope) for *POST api/annotations*
+####Response body (envelope) for *POST api/annotations*
 
 
 ```xml 
@@ -287,7 +289,7 @@ The client sends metadata cached representation in the POST body, and a cached r
 
 ###Editing an annotation
 
-PUT *api/annotations/1d02f393-da25-4246-934c-876222a2d7fb*
+####PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb
 
 Since the complete update of the annotation assumes also changing the premissions, this request can be perforemd only by the owner of the annotation.
 
@@ -320,7 +322,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </annotation>
 ```
 
-Enveloped respond containing new (updated) annotation and a list of actions:
+####Enveloped respond containing new (updated) annotation and a list of actions:
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -354,7 +356,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </actionList>
 </responseBody>
 ```
-*PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/body*
+####PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/body
 
 The request can be peformed by a "writer".
 
@@ -405,9 +407,9 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </actionList>
 </responseBody>
 ```
-*PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions* (performed by the owner)
+####PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions
 
-Supplementary updating the list of permissions in the annotation. If the principal is listed in this body,  her/his access level is updated accrording to what is given in the body.
+Performed by the owner. Supplementary updating the list of permissions in the annotation. If the principal is listed in this body,  her/his access level is updated accrording to what is given in the body.
 
 Request body:
 
@@ -455,7 +457,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 
 **Check if the feature above is implemented**.
 
-PUT *api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions/00000000-0000-0000-0000-000000000114*
+####PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions/00000000-0000-0000-0000-000000000114
 
 Peformed by the owner.
 
@@ -469,7 +471,7 @@ Response: string "1 rows are updated/added".
 
 ###Managing Notebooks (obsolete section)
 
-*GET api/notebooks*
+####GET api/notebooks
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -484,7 +486,7 @@ Response: string "1 rows are updated/added".
     </notebook>
 </notebooks>
 ```
-*GET api/notebooks/NIDxyxy*
+####GET api/notebooks/NIDxyxy
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -495,7 +497,7 @@ Response: string "1 rows are updated/added".
     <title>Gaudi</title>
 </notebook>
 ```
-*GET api/notebooks/NIDxyxy/annotations/*
+####GET api/notebooks/NIDxyxy/annotations/
 
 Respond is a list of annotation info, is similar to the respond on *GET api/annotations?link="http://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"&access=read*
 
