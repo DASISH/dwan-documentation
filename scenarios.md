@@ -1,7 +1,5 @@
 ## Web-annotator/API interaction scenarios
 
-[text](examples.md#Working)
-
 ### Authentication api/authentication/login 
 
 If a principal logs-in to the annotation service, ```prid``` gets known by the server. Principal's information can be seen at e.g. 
@@ -15,7 +13,7 @@ If a principal logs-in to the annotation service, ```prid``` gets known by the s
  *GET api/annotations?link=http://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia&access=read*
 * Service: returns list of annotation info: URI-s with the corresponding headlines, owners, and target source refs (URI-s);
 
-See the example "getting annotations for Sagrada Famiglia wiki-page" in [examples](examples.md).
+See the example [getting annotations for Sagrada Famiglia wiki-page](examples.md#responding-get-apiannotationslinksagrada).
 
 If the client cannot fit annotated fragments into the current version of the document, the corresponding target source is called unresolved. Unresolvability of a target source triggers the client-side workflow of getting a cached representation of the annotated version of the document.
 
@@ -27,7 +25,7 @@ If the client cannot fit annotated fragments into the current version of the doc
 * Client: retrieves the annotation GET api/annotations/```aid```
 * Service: returns the annotation
 
-See the example of getting an annotation in [examples](examples.md).
+See the example of [getting an annotation in examples](examples.md#responding-get-apiannotations00000000-0000-0000-0000-000000000021).
 
 **Unresolvable target**
 
@@ -42,8 +40,8 @@ See the example of getting an annotation in [examples](examples.md).
  
 **Annotation creation**
 * Principal: creates a text note on a selected text.
-* Client: sends the annotation to the server *POST api/annotation*. See an example of the body of the POST a new annotation in [examples](examples.md).
-* Service: responds with the envelope: {*annotation-new*, *Actions*}. Here *annotation-new* is the serialisation of the newly-created in the DB annotation obtained from the POSTed new *annotation* by replacing all its temporary target- id-s with the corresponding actual references, which are URI's in the DB. The list of actions may be empty or contain "CREATE_CACHED_REPRESENTATION". See a response esponse upon creating a new annotation in [examples](examples.md).
+* Client: sends the annotation to the server *POST api/annotation*. See an example of [the body of the POST a new annotation in examples](examples.md#request-body-for-post-apiannotations).
+* Service: responds with the envelope: {*annotation-new*, *Actions*}. Here *annotation-new* is the serialisation of the newly-created in the DB annotation obtained from the POSTed new *annotation* by replacing all its temporary target- id-s with the corresponding actual references, which are URI's in the DB. The list of actions may be empty or contain "CREATE_CACHED_REPRESENTATION". See a [response envelope upon creating a new annotation in examples](examples.md#response-body-envelope-for-post-apiannotations).
 
 * Client: sends cached representation POST/api/targets/```tid```/fragmet/```fragmentdescriptor```/cached
 * Service: stores representation
@@ -52,7 +50,7 @@ See the example of getting an annotation in [examples](examples.md).
 
 *PUT api/annotations/```aid```/body*
 
-Request body: XML new body *annotation*, see "updated annotation" in [examples](examples.md). Response is an envelope as for posting, also see [examples](examples.md).
+Request body: XML new body *annotation*, see ["updated annotation" in examples](examples.md#request-body--an-updated-annotation). Response is an envelope as for posting, also [see examples](examples.mdenveloped-respond-containing-new-updated-annotation-and-a-list-of-actions).
 
 ###Managing permission lists of permissions
 
@@ -62,23 +60,23 @@ A permission is a pair (principal reference, access), where access is "read" or 
 
 *GET api/annotations/```aid```/permissions*
 
-Response: see List of permissions for a given annotation, see [examples](examples.md).
+Response: see List of permissions for a given annotation, see [examples](examples.md#get-apiannotations00000000-0000-0000-0000-000000000021permissions).
 
 **Adding and deleting principals in permission lists**
 
 *GET api/principals/info?email=[[...]]*
 
-Response: Principal (her/his uri, display name, e-mail), see getting principal via his/her e-mail, see [examples](examples.md). If a principal with the given e-mail does not exist, status 404 is returned.
+Response: Principal (her/his uri, display name, e-mail), see getting principal via his/her e-mail, see [examples](examples.md#get-apiprincipalsinfoemailtwagoompinl). If a principal with the given e-mail does not exist, status 404 is returned.
 
 *PUT api/annotations/```aid```/permissions*
 
-Request body contains the list of permissions, see "update permission list" in [examples](examples.md). Response is the envelope.
+Request body contains the list of permissions, see "update permission list" in [examples](examples.md#put-apiannotations1d02f393-da25-4246-934c-876222a2d7fbpermissions). Response is the envelope.
 
 **Adding a principal with a certain access**
 
 *PUT api/annotations/```aid```/permissions/```prid```*
 
-Request body contains the access level of this user to this annotation, see "adding/updating a principal with a specific permission", see [examples](examples.md). No enveloped response, just an http status code.
+Request body contains the access level of this user to this annotation, see "adding/updating a principal with a specific permission", see [examples](examples.md#put-apiannotations1d02f393-da25-4246-934c-876222a2d7fbpermissions00000000-0000-0000-0000-000000000114). No enveloped response, just an http status code.
 
 **Removing a reader or a writer**
 
