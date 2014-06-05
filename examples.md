@@ -293,7 +293,7 @@ The client sends metadata cached representation in the POST body, and a cached r
 
 Since the complete update of the annotation assumes also changing the premissions, this request can be perforemd only by the owner of the annotation.
 
-Request body : an updated annotation
+####Request body : an updated annotation
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
