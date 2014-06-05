@@ -170,11 +170,8 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </cachedRepresentatinons>
 </target>
 ```
-*GET api/targets/00000000-0000-0000-0000-000000000032/versions*
 
-
-
-An unresolvable target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema element. If the primcipla sees that the client cannot resolve some targets in the requested annotations (e.g., some target fragments are not highlighted) , (s)he may ask for cached representations of the annotated source.
+An *unresolvable* target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema element. If the primcipla sees that the client cannot resolve some targets in the requested annotations (e.g., some target fragments are not highlighted) , (s)he may ask for cached representations of the annotated source.
 
 *GET api/cached/00000000-0000-0000-0000-000000000051/metadata*
 
@@ -196,7 +193,11 @@ or
 
 *GET api/cached/00000000-0000-0000-0000-000000000051/content* (if it is an image)
 
-Additionally,  a client may request the list of all versions of a target.
+Additionally,  a client may request the list of all versions of a target:
+
+*GET api/targets/00000000-0000-0000-0000-000000000032/versions*
+
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <referenceList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -434,7 +435,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <actionList/>
 </responseBody>
 ```
-Now, assume that principal 00000000-0000-0000-0000-000000000114 is not known to the DASISH data base then respond bey would be:
+Now, assume that principal 00000000-0000-0000-0000-000000000114 is not known to the DASISH data base then response would be:
 
 Respond
 
@@ -451,9 +452,12 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </actionList>
     </responseBody>
 ```
+
+**Check if the feature above is implemented**.
+
 PUT *api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions/00000000-0000-0000-0000-000000000114*
 
-Peforemd by the owner.
+Peformed by the owner.
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8"?>
