@@ -50,7 +50,7 @@ See the example of [getting an annotation in examples](examples.md#responding-ge
 
 *PUT api/annotations/```aid```/body*
 
-Request body: XML new body *annotation*, see ["updated annotation" in examples](examples.md#request-body--an-updated-annotation). Response is an envelope as for posting, also [see examples](examples.mdenveloped-respond-containing-new-updated-annotation-and-a-list-of-actions).
+Request body: XML new body *annotation*, see ["updated annotation" in examples](examples.md#request-body--an-updated-annotation). Response is an envelope as for posting, also [see examples](examples.md#enveloped-respond-containing-new-updated-annotation-and-a-list-of-actions).
 
 ###Managing permission lists of permissions
 
