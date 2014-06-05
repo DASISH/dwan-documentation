@@ -1,5 +1,7 @@
 ## Web-annotator/API interaction scenarios
 
+[text](examples.md#Preamble)
+
 ### Authentication api/authentication/login 
 
 If a principal logs-in to the annotation service, ```prid``` gets known by the server. Principal's information can be seen at e.g. 
@@ -29,7 +31,7 @@ See the example of getting an annotation in [examples](examples.md).
 
 **Unresolvable target**
 
-* Principal: select an annotation with unresolvable targets for reading.
+* Principal: selects an annotation with unresolvable targets for reading.
 * Client: get annotation GET api/annotations/```aid```
 * Client: does show the annotated web-document, but does not show the annotation because the annotated fragment(s) cannot be resolved. Refreshing the page does not help.
 * Principal: requests a cached representation of the annotation, e.g. "Cached representations --> get remote cache".
