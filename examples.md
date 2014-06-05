@@ -171,7 +171,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </target>
 ```
 
-An *unresolvable* target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken, or the source page has been changed so that the annotated fragment cannot be matched. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema element. If the primcipla sees that the client cannot resolve some targets in the requested annotations (e.g., some target fragments are not highlighted) , (s)he may ask for cached representations of the annotated source.
+An *unresolvable* target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken, or the source page has been changed so that the annotated fragment cannot be matched. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema type. If the principal sees that the client cannot resolve some targets in the requested annotations (e.g., some target fragments are not highlighted) , (s)he may ask for cached representations of the annotated source.
 
 *GET api/cached/00000000-0000-0000-0000-000000000051/metadata*
 
