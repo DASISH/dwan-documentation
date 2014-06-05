@@ -2,7 +2,7 @@
 
 ###Preamble
 
-There are 5 sorts of resources in DASISH: CachedRepresentation, Target, Principal, Annotation, Notebook. Each of them has the corresponding xsd-type in the schema. There is no an xsd-schema with the name Cached representation because a cached representation is a "pure" resource like an image or a text file that does not contain any meta-information about itself. The metadata of a cached presentation are defined via an instance of CachedRepresentationInfo type.
+There are 5 sorts of resources in DASISH: CachedRepresentation, Target, Principal, Annotation, Notebook. Each of them has the corresponding xsd-type in the schema. There is no type with the name CachedRepresentation because a cached representation is a "pure" resource like an image or a text file that does not contain any meta-information about itself. The metadata of a cached presentation are defined via an instance of CachedRepresentationInfo type.
 
 Each of these 5 types has an obligatory attribute "URI" which contains DASISH identifier pointing to the location of the resource on the DASISH server.
 
@@ -11,8 +11,6 @@ Resource-info types TargetInfo, AnnotationInfo, NotebookInfo contain reference t
 There is a number of auxiliary types as well. A commonly-used one is ResourceREF which contains the attribute "ref" of type xs:anyURI. It allows to declare elements-references and avoid mixing them with elements-resources.
 
 Currently the schema is located at [SchemaCat repository](http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd).
-
-Scenario XML's validated vs the given schema. See [scenario](scenarios.md).
 
 ### Working with principals 
 *GET api/principals/00000000-0000-0000-0000-000000000112*
@@ -134,6 +132,8 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000031</ref>
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
 </targetList>
+
+
 ```
 *GET api/annotations/00000000-0000-0000-0000-000000000021/permissions*
 ```xml
@@ -152,7 +152,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 ```
 *GET api/targets/00000000-0000-0000-0000-000000000032*
 
-An unresolvable target obeys the same schema. A target becomes unresolvable if e.g. its link becomes obsolete or broken.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <target xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" URI="https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032" 
@@ -172,14 +172,9 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 ```
 *GET api/targets/00000000-0000-0000-0000-000000000032/versions*
 
-```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<referenceList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
-    <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
-    <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-00000000003c</ref>
-</referenceList>
-```
+
+
+An unresolvable target obeys the same schema type. A target becomes unresolvable if e.g. its link becomes obsolete or broken. The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema element. If the primcipla sees that the client cannot resolve some targets in the requested annotations (e.g., some target fragments are not highlighted) , (s)he may ask for cached representations of the annotated source.
 
 *GET api/cached/00000000-0000-0000-0000-000000000051/metadata*
 
@@ -193,86 +188,30 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </cashedRepresentationInfo>
 ```
 
-Responding *GET api/annotations/00000000-0000-0000-0000-00000000002c* (example usage for unresolvable targets, step 1)
+For getting an actual cahced-representation file, use 
 
-The respond for an annotation with unresolved targets and the respond for an annotation with resolved targets (see above) are both instances of the same schema element. However, one of the targets of the first annotations annotation refers e.g. to an obsolete version of the page. Next, having the target eferences, the client will ask for the source versions saved in the DB. The last step: having the info about the version under consideration, the client asks for cached representations of the version.
+*GET api/cached/00000000-0000-0000-0000-000000000051/stream*
 
+or 
+
+*GET api/cached/00000000-0000-0000-0000-000000000051/content* (if it is an image)
+
+Additionally,  a client may request the list of all versions of a target.
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<annotation xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-URI="https://lux17.mpi.nl/ds/webannotator/api/annotations/00000000-0000-0000-0000-00000000002c" 
-ownerRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000111"
- xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
-    <headline>Sagrada Famiglia</headline>
-    <lastModified>2013-08-12T09:25:00.383Z</lastModified>
-    <body>
-        <textBody>
-            <mimeType>text/html</mimeType>
-            <body>&lt;html&gt;&lt;body&gt;some html 1&lt;/body&gt;&lt;/html&gt;</body>
-        </textBody>
-    </body>
-    <targets>
-        <targetInfo ref="https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-00000000003c">
-            <link>http://nl.wikipedia.org/wiki/Antoni_Gaud%C3%AD#Vroege_werk_old</link>
-            <version>version 1.1</version>
-        </targetInfo>
-    </targets>
-    <permissions public="read">
-        <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000112" level="write"/>
-        <permission principalRef="https://lux17.mpi.nl/ds/webannotator/api/principals/00000000-0000-0000-0000-000000000113" level="read"/>
-    </permissions>
-</annotation>
-```
-Responding *GET api/targets/00000000-0000-0000-0000-00000000003c* (unresolvable target sources , step 2; the same as for resolvable, just the link is broken or obsolete)
-
-```xml 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<target xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-URI="https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032" 
-xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
-    <lastModified>2012-03-13T09:52:51.004723Z</lastModified>
-    <link>http://nl.wikipedia.org/wiki/Antoni_Gaud%C3%AD#Vroege_werk_old</link>
-    <version>version 1.1</version>
-    <siblingTargets>
-        <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-00000000003c</ref>
-        <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
-    </siblingTargets>
-    <cachedRepresentatinons>
-        <cached ref="https://lux17.mpi.nl/ds/webannotator/api/cached/00000000-0000-0000-0000-000000000052">
-            <fragmentString>Vroeger Werk</fragmentString>
-        </cached>
-    </cachedRepresentatinons>
-</target>
-```
-Responding *GET api/targets/00000000-0000-0000-0000-00000000003c/versions* (unresolvable target sources, step 3)
-
-```xml 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<referenceList xmlns="http://www.dasish.eu/ns/addit" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<referenceList xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-000000000032</ref>
     <ref>https://lux17.mpi.nl/ds/webannotator/api/targets/00000000-0000-0000-0000-00000000003c</ref>
 </referenceList>
-Responding GET api/cached/00000000-0000-0000-0000-000000000052/metadata (unresolvable target sources, step 5)
-
-```xml <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<cashedRepresentationInfo xmlns="http://www.dasish.eu/ns/addit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-URI="https://lux17.mpi.nl/ds/webannotator/api/cached/00000000-0000-0000-0000-000000000052" 
-xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
-    <mimeType>image/png</mimeType>
-    <tool>some tool 2</tool>
-    <type>image</type>
-</cashedRepresentationInfo>
 ```
+
+
 
 ###Making a new annotation
 
 Request body for *POST api/annotations*
 
-The new annotation URI, the owner reference will be replaced by the server. The new annotation URI is service URI + the UUID generated by the server. The owner reference is the service URI + logged-in user UUID.
-
-The targets's URI will be replaced if the target is new (has not been presented in the dtatabase yet).
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -302,9 +241,12 @@ The targets's URI will be replaced if the target is new (has not been presented 
     </permissions>
 </annotation>
 ```
+
+New-annotation's URI and  the owner reference will generated by the server, and the ones given in the request will be replaced. The new annotation URI is service URI + the UUID generated by the server. The owner reference is the service URI + logged-in user UUID.
+The targets's URI will be replaced if the target is new (has not been presented in the dtatabase yet).
+
 Response body (envelope) for *POST api/annotations*
 
-The temporary URIs/references are replaced with permanent references. However, no cahced representation is found for the target. Therefore, in the action part of the envelope there is an action CREATE_CACHED_REPRESENTATION for the object which is the target for the web-page.
 
 ```xml 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -338,11 +280,15 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </actionList>
 </responseBody>
 ```
+As you see, the temporary URIs/references are replaced with permanent references. However, no cahced representation is found for the target. Therefore, in the action part of the envelope there is an action CREATE_CACHED_REPRESENTATION for the object which is the target for the web-page.
+
 The client sends metadata cached representation in the POST body, and a cached representation itself. An example of serialized metadata for a cached representation has been considered above, so we do not give it here.
 
 ###Editing an annotation
 
 PUT *api/annotations/1d02f393-da25-4246-934c-876222a2d7fb*
+
+Since the complete update of the annotation assumes also changing the premissions, this request can be perforemd only by the owner of the annotation.
 
 Request body : an updated annotation
 
@@ -372,6 +318,7 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </permissions>
 </annotation>
 ```
+
 Enveloped respond containing new (updated) annotation and a list of actions:
 
 ```xml 
@@ -407,6 +354,8 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 </responseBody>
 ```
 *PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/body*
+
+The request can be peformed by a "writer".
 
 Request body:
 
@@ -455,9 +404,9 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
     </actionList>
 </responseBody>
 ```
-*PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions*
+*PUT api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions* (performed by the owner)
 
-Supplementary updating the list of permissions in the annotation: if the principal is not listed in the permission of the annotation, it is added to the list of permissions, otherwise her/his access level is updated in the existing list.
+Supplementary updating the list of permissions in the annotation. If the principal is listed in this body,  her/his access level is updated accrording to what is given in the body.
 
 Request body:
 
@@ -504,6 +453,8 @@ xsi:schemaLocation="http://lux17.mpi.nl/schemacat/schemas/s15/files/dwan.xsd">
 ```
 PUT *api/annotations/1d02f393-da25-4246-934c-876222a2d7fb/permissions/00000000-0000-0000-0000-000000000114*
 
+Peforemd by the owner.
+
 ```xml 
 <?xml version="1.0" encoding="UTF-8"?>
 <access xmlns="http://www.dasish.eu/ns/addit"
@@ -546,8 +497,7 @@ Respond is a list of annotation info, is similar to the respond on *GET api/anno
 
 ###Issues with the schema
 
-As regards all future schema updates, remember to update all available scenario xml documents on 
-the gGitHub accordingly, and preferably, with as little delay as possible. Validate all of these documents against the revised schema with a reliable XML parser like e.g. the Xerces-J XML parser. Also, if you like, you can check by validating some of our current "real-life" mock xml documents that we have been using for [client development](https://trac.clarin.eu/browser#DASISH/t5.6/client/trunk/chrome/markingcollection/content/markingcollection/annotator-service/test/mockjax/mocks).
+As regards all future schema updates, remember to update all available scenario xml documents on  the gGitHub accordingly, and preferably, with as little delay as possible. Validate all of these documents against the revised schema with a reliable XML parser like e.g. the Xerces-J XML parser. Also, if you like, you can check by validating some of our current "real-life" mock xml documents that we have been using for [client development](https://trac.clarin.eu/browser#DASISH/t5.6/client/trunk/chrome/markingcollection/content/markingcollection/annotator-service/test/mockjax/mocks).
 
 ###Cached Representations' BLOBs
 
