@@ -14,7 +14,7 @@ This page describes the implementation of the backend for the DASISH annotation 
 
 ####Architecture overview
 
-![Architecture](images/dasish_backend_architecture.png)
+![Architecture](images/backend/dasish_backend_architecture.png)
 
 ####Database and Database Access Objects
 
