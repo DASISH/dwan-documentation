@@ -9,7 +9,7 @@ This document refers to several images which are open-annotation representations
 ###Target Sources
 Single target sources are represented as instances of ```oa:SpecificResource```. Example:
 
-![source](images/source.png)
+![source](images/open_annotation/source.png)
 
 Multiple target sources are represented as instances of ```oa:Composite```. Each of ```oa:item``` of the composite is either an instance of ```oa:SpecificResource``` or ```oa:Composite```.
 
@@ -28,16 +28,16 @@ and in principle suits DASISH schema for a user and permission lists. There is o
 foaf agents do not have a property which can be used to define permission types (reader, writer) directly. 
 For now, permissions are represented via property ```foaf:topic_interest```. Example:
 
-![principal](images/users.png)
+![principal](images/open_annotation/users.png)
 
 ###Bodies
 An annotation body in DASISH can be any correct xml or a text. A generic way to present such bodies in "Open Annotation" is to consider a body, which (typically) has attributes and elements, as instances of ````oa:Composite````. Any element and any attribute of the body becomes an oa:item of the body. If an element has sub-elements, it is an instance of oa:Composite as well, etc. An attribute or an element with now sub-elements has one of the dctypes and one of the dc:formtats, and possibly additional relevant properties, such as ````cnt:chars``` for text values. Example of an annotation with its properties and the detailed body:
 
-![body1](images/annotation.png)
+![body1](images/open_annotation/annotation.png)
 
 Another example:
 
-![body2](images/AnnotationUGOT.png)
+![body2](images/open_annotation/AnnotationUGOT.png)
 
 ###Headlines
 Any DASISH annotation contains a text element called headline. There is no direct way to represent such a headline in Open Annotation Data Model. In DASISH presentation it is an ```oa:item``` of a "big" body, called SuperBody which is an instance of ```oa:Composite```. Another item of SuperBody is the actual body of the annotation.
@@ -45,4 +45,4 @@ Any DASISH annotation contains a text element called headline. There is no direc
 ###Notebooks
 Open Annotation does not define structures like "notebook" or "annotations collection", or similar. Nevertheless, a notebook can be presented as an annotation which body is title and target Annotations is an instance of ```oa:Composite```. Any annotation in the notebook becomes an ```oa:item``` of Annotations. Example:
 
-![notebooks](images/notebooks.png)
+![notebooks](images/open_annotation/notebooks.png)
