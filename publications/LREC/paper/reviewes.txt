@@ -1,0 +1,232 @@
+On 24/01/14 13:03, "lrec@lrec-conf.org" <lrec@lrec-conf.org> wrote:
+
+Dear Przemyslaw Lenkiewicz:
+
+We are pleased to inform you that the following submission has been
+accepted for a Poster + Demo presentation at the 9th  International
+Conference on Language Resources and Evaluation:
+
+     The DWAN framework: Application of a web annotation
+           framework for the general humanities to the domain of
+           language resources
+
+Following the advice of reviewers, the LREC2014 Programme Committee
+suggests that you run a demonstration during your Poster presentation.
+Please let us know if you accept this suggestion and do intend to present
+a demo alongside the Poster sending an email to this address
+(lrec@lrec-conf.org).
+
+Please inform your co-author(s), if any. Each submission has been
+reviewed by three reviewers; please find attached their comments, if any.
+
+Poster Sessions will be placed in parallel to Oral Sessions and therefore
+their length varies accordingly: during the session you will have the
+opportunity to describe your work and interact with interested conference
+participants. We request that you be at your Poster Session for the
+entire time slot. Further details for poster presenters will be detailed
+on the conference web site at due time.
+
+Regarding technical details and requests of your Demo, please contact
+Sara Goggi at the following email address: lrec@ilc.cnr.it.
+
+
+The conditions for your participation in a Poster Session at LREC are the
+following:
+
+1) you confirm your participation by registering for LREC by March 15,
+2014 which is also the deadline for early registration with reduced fee
+(at least ONE author of the paper MUST register);
+AND
+2) you submit the final version of your paper by March 22, 2014 (FIRM
+deadline) in compliance with the "Authors' Kit" which is available on the
+LREC 2014 web site
+(http://lrec2014.lrec-conf.org/en/submission/authors-kit/) and contains
+the Style sheet and the length for papers to appear in the Proceedings.
+
+You can upload your final manuscript at the following site:
+
+     https://www.softconf.com/lrec2014/main/
+
+You will be prompted to login to your START account and thus access to
+your User Console: from here please choose "Your current Submission(s)"
+for accessing the list of your submission(s). Click on this submission id
+for submitting the final full paper.
+
+In case you need it, this is the passcode associated with your submission:
+    
+1053X-H3H6A7B9C5
+
+We would like to remind you that there is no quality difference between
+Oral and Poster presentations and there will be no difference between
+them in the Proceedings.  The choice of style of presentation of your
+paper was made based on what would be the most informative and effective
+way to communicate the scientific contents of your presentation. There
+will be Chairpersons both for oral and poster sessions.
+
+We remind you that you can update/revise the data for the LRE Map on the
+submission page and invite you to contribute to the "Share your LRs!"
+initiative as well.
+
+Online registration and hotel booking, conference details and local
+information about Reykjavik will be soon available at the LREC 2014
+website (http://lrec2014.lrec-conf.org/en/).
+
+If your organization requires you to have an official letter of
+acceptance from the LREC2014 Programme Committee in order to make
+arrangements to attend the conference, please request such a letter from
+the Conference Chair at: lrec@ilc.cnr.it.
+
+If you require an official letter of invitation from the local organizer
+(e.g. to obtain a visa), you have the possibility of requesting such a
+letter via the registration tool which will be available by mid-February
+on the Conference web site.
+
+We would like to thank you for your participation in LREC and look
+forward to your presentation at the conference.
+
+Best regards,
+LREC2014 Programme Committee
+
+
+==========================================================================
+==
+LREC 2014  Reviews for Submission #1053
+==========================================================================
+==
+
+Title: The DWAN framework: Application of a web annotation framework for
+the general humanities to the domain of language resources
+
+Authors: Przemyslaw Lenkiewicz, Olha Shkaravska, Twan Goosen, Daan
+Broeder, Menzo Windhouwer, Stephanie Roth and Olof Olsson
+==========================================================================
+==
+                            REVIEWER #1
+==========================================================================
+==
+
+
+--------------------------------------------------------------------------
+-
+Comments
+--------------------------------------------------------------------------
+-
+
+The paper briefly describes an annotation framework that may be used to
+integrate or to extend existing annotation tools. It additionally presents
+results of interviews of linguistic researchers regarding their
+requirements
+for annotation software. The architecture of the system, relying on an
+object
+oriented data model of users, annotators and annotation objects, is only
+very
+briefly described. What I also miss are references to the literature,
+especially, to related web-based tools that also come along with object
+oriented data models. In this sense, the Related Work part of the paper is
+definitely too short. Though I am sure that the MPI has very nice and
+important
+tools what regards linguistic annotation, I suspect that this is the only
+source for such software. Finally, the interviews are summarized in a
+post-hoc
+manner. Seemingly, the architecture has been developed first and only
+later, it
+has been justified by the results of the interview (page 3: "These
+requirements
+are well in line with the specification of DWAN framework."). In contrast
+to
+this, one should start from a requirements analysis before one starts with
+coding. Is there a justification why this order has been changed?
+
+==========================================================================
+==
+                            REVIEWER #2
+==========================================================================
+==
+
+
+--------------------------------------------------------------------------
+-
+Comments
+--------------------------------------------------------------------------
+-
+
+The abstract presents DWAN, a collaborative annotation environment that
+leverages existing technology, such as the Wired-Marker Firefox extension
+for
+in-browser annotation. DWAN adds server-side functionality to enable
+collaboration, functionality that is reachable via a REST API.
+
+Beside supporting collaboration, the server-based approach also provides
+data
+persistence, protecting the annotation metadata from changes to the
+original
+content, and assisting with migrating the annotaiton to the new version,
+when
+such changes occur.
+
+This work is clearly of high relevance to the research community and the
+DWAN
+annotation framework is of great practical use.
+
+The English used in the paper is of a very high standard. The references
+are
+fine, though there are a a few more systems that could be used for
+comparison,
+e.g. BRAT (http://brat.nlplab.org/), or GATE Teamware
+(http://gate.ac.uk/teamware/), to name just two.
+
+==========================================================================
+==
+                            REVIEWER #3
+==========================================================================
+==
+
+
+--------------------------------------------------------------------------
+-
+Comments
+--------------------------------------------------------------------------
+-
+
+The paper describes an annotation framework roughly compatible with the
+open
+annotation framework, exposing REST API and offering a history/version
+support.
+One note on the section "Introduction": i would change sentence to "who
+is not
+NECESSARILY the owner.."
+I suggest to add more references. I don't know if the authors cut them
+from the
+ext abstract, but they were not counted in the limit, and from this
+shorter
+version it is not clear if proper reference is made to state of the art.
+As the authors are putting the accent on the framework more than client
+solutions, they may want to cite this:
+
+Manuel Fiorelli, Maria Teresa Pazienza and Armando Stellato A
+Comprehensive
+Framework for Semantic Annotation of Web Content, International
+Conference on
+Knowledge Engineering and Ontology Development (KEOD 2013), Vilamoura,
+Algarve,
+Portugal, September, 19-22, 2013
+
+Also, the authors cite the open annotation data model, so why didn't they
+opted
+for a direct RDF storage?
+It is not clear also how complex the annotations can be. We only know
+there are
+annotations, we know there is metadata, but don't know how much of the
+open
+annotation format is being covered. Does the framework annotation schema
+allows
+for a span or are these only global annotations on a document? (guess the
+former from sections 3.1/3.2, but better to make it clear in the
+appropriate
+sections than hinting at it later). Are multispanned annotations
+representable?
+
+I suggest to take these specifications into consideration in case the
+paper is
+accepted for publication
+
